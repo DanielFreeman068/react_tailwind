@@ -42,8 +42,8 @@ const Dashboard = () => {
         {/* Hamburger Button (for small screens) */}
         <div className='flex justify-between border-b border-[#284b74] pb-5'>
           <div className='flex items-center'>
-            <button className="lg:hidden p-2 text-black text-4xl mr-3" onClick={toggleSidebar}>☰</button>
-            <h1 className='text-dark-blue text-3xl'>Cash Compass</h1>
+            <button className="lg:hidden p-2 text-black text-3xl md:text-4xl mr-3" onClick={toggleSidebar}>☰</button>
+            <h1 className='text-dark-blue text-xl md:text-3xl'>Dashboard</h1>
           </div>
           <div className='flex items-center'>
             <h1 className='text-dark-blue text-2xl mr-4'>Daniel</h1>
