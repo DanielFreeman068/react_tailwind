@@ -11,6 +11,9 @@ module.exports = {
         'bg-gray': '#e8effc',
         'dark-blue': '#284b74',
       },
+      screens: {
+        'custom-large': '1460px',
+      },
     },
   },
   plugins: [],
