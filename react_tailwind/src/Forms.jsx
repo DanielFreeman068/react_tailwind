@@ -51,19 +51,19 @@ const Forms = () => {
                     {!formActive &&
                     <div className="flex flex-col justify-between mx-auto mt-20 gap-10 md:gap-20">
                         <div className="flex md:flex-row flex-col gap-10 md:gap-20 mx-auto">
-                            <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("income")}>
-                                <h1 className="text-4xl ml-6 text-dark-blue">Income</h1>
+                            <button className="bg-[url(./incomeMobile2.png)] md:bg-[url(./income.png)] bg-cover md:bg-cover w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("income")}>
+                                <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Income</h1>
                             </button>
-                            <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("expense")}>
-                                <h1 className="text-4xl ml-6 text-dark-blue">Expense</h1>
+                            <button className="bg-[url(./expenseMobile.png)] md:bg-[url(./expense.png)] bg-cover md:bg-cover w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("expense")}>
+                                <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Expense</h1>
                             </button>
                         </div>
                         <div className="flex md:flex-row flex-col gap-10 md:gap-20 mx-auto">
                             <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("savings")}>
-                                <h1 className="text-4xl ml-6 text-dark-blue">Savings</h1>
+                                <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Savings</h1>
                             </button>
                             <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("debt")}>
-                                <h1 className="text-4xl ml-6 text-dark-blue">Debt</h1>
+                                <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Debt</h1>
                             </button>
                         </div>
                     </div>
@@ -106,8 +106,8 @@ const Forms = () => {
                                 <option value="Other">Other</option>
                             </select>
                             <div className="flex justify-between w-5/6 mx-auto">
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
                             <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
                             <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
@@ -124,8 +124,8 @@ const Forms = () => {
                                 <option value="Out">Out</option>
                             </select>
                             <div className="flex justify-between w-5/6 mx-auto">
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
                             <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
                             <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
@@ -145,8 +145,8 @@ const Forms = () => {
                                 <option value="Other">Other</option>
                             </select>
                             <div className="flex justify-between w-5/6 mx-auto">
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
-                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-[300px] focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
+                                <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
                             <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
                             <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
