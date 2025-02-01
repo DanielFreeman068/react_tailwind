@@ -29,8 +29,8 @@ const Forms = () => {
                         <ul>
                             <li><a href="/" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">Dashboard</a></li>
                             <li><a href="/forms" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">Forms</a></li>
-                            <li><a href="/" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">History</a></li>
-                            <li><a href="/" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">About Us</a></li>
+                            <li><a href="/history" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">History</a></li>
+                            <li><a href="/about" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">About Us</a></li>
                         </ul>
                         <div className="flex-grow" />
                         <div className="mb-4">
@@ -45,7 +45,7 @@ const Forms = () => {
                     <div className="flex justify-between border-b border-[#284b74] pb-5">
                         <div className="flex items-center">
                             <button className="lg:hidden p-2 text-black text-3xl md:text-4xl mr-3" onClick={toggleSidebar}>☰</button>
-                            <h1 className="text-dark-blue text-xl md:text-3xl">Dashboard</h1>
+                            <h1 className="text-dark-blue text-xl md:text-3xl">Forms</h1>
                         </div>
                         <div className="flex items-center">
                             <h1 className="text-dark-blue text-2xl mr-4">Daniel</h1>
