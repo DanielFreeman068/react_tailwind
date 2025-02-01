@@ -79,8 +79,8 @@ const Dashboard = () => {
     { id: 8, type: "income", amount: 500, category: "Gifts", date: "2025-01-19" },
     { id: 9, type: "expense", amount: -35, category: "Education", date: "2025-01-18" },
     { id: 10, type: "expense", amount: -35, category: "Restaurant", date: "2025-01-17" },
-    { id: 11, type: "expense", amount: -35, category: "Other", date: "2025-01-16" },
-    { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
+    // { id: 11, type: "expense", amount: -35, category: "Other", date: "2025-01-16" },
+    // { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
   ];  
 
   return (
@@ -145,10 +145,10 @@ const Dashboard = () => {
               <div className="bg-white p-4 rounded-lg shadow-md h-[200px]">Box B</div>
             </div>
           </div>
-          {/* transactions */}
+          {/* transactions (last 10) */}
           <div className="w-full height-full custom-large:w-[400px] bg-white rounded-lg shadow-md p-4 mt-4">
             <h2 className="text-xl font-semibold mb-4 text-dark-blue">Recent Transactions</h2>
-            <div className="space-y-4 max-h-[800px] overflow-y-auto">
+            <div className="space-y-4 max-h-[900px] overflow-y-auto">
               {transactions.map((transaction) => (
                 <div key={transaction.id} className="flex items-center justify-between p-3 border-b border-gray-100">
                   {/* Icon on the left */}
@@ -159,7 +159,6 @@ const Dashboard = () => {
                       <p className="text-sm text-gray-500">{transaction.date}</p>
                     </div>
                   </div>
-                  
                   {/* Amount on the right */}
                   <span className={`font-semibold ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                     {transaction.type === 'income' ? '+' : ''}{transaction.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
@@ -167,6 +166,7 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
+            <a className="text-blue-400 hover:underline" href="/forms">View all</a>
           </div>
         </div>
       </div>

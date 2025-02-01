@@ -12,7 +12,7 @@ module.exports = {
         'dark-blue': '#284b74',
       },
       screens: {
-        'custom-large': '1460px',
+        'custom-large': '1560px',
       },
     },
   },
