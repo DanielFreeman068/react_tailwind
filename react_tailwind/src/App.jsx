@@ -128,6 +128,11 @@ const Dashboard = () => {
                 <option value="expenseIncome">Expense & Income</option>
                 <option value="debt">Debt</option>
               </select>
+              <select value={selectedOption} className="mb-4 p-2 border rounded float-right">
+                <option value="1_month">1 Month</option>
+                <option value="6_months">6 Months</option>
+                <option value="12_months">12 Months</option>
+              </select>
               {/* Chart */}
               <Bar data={chartDataActive} options={chartOptions} />
             </div>
