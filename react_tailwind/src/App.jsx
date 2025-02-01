@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
+import { FaBriefcase, FaHome, FaShoppingBasket, FaChartLine, FaCar, FaHeartbeat, FaFilm, FaGift, FaBook, FaUtensils, FaEllipsisH, FaLandmark } from "react-icons/fa";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -35,6 +36,36 @@ const Dashboard = () => {
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
+  //category icons
+  const getCategoryIcon = (category) => {
+    switch (category.toLowerCase()) {
+      case "employment":
+        return <FaBriefcase className="w-6 h-6 text-blue-500" />;
+      case "living":
+        return <FaHome className="w-6 h-6 text-gray-500" />;
+      case "groceries":
+        return <FaShoppingBasket className="w-6 h-6 text-green-500" />;
+      case "investments":
+        return <FaChartLine className="w-6 h-6 text-indigo-500" />;
+      case "transportation":
+        return <FaCar className="w-6 h-6 text-yellow-500" />;
+      case "healthcare":
+        return <FaHeartbeat className="w-6 h-6 text-red-500" />;
+      case "entertainment":
+        return <FaFilm className="w-6 h-6 text-purple-500" />;
+      case "gifts":
+        return <FaGift className="w-6 h-6 text-pink-500" />;
+      case "education":
+        return <FaBook className="w-6 h-6 text-orange-500" />;
+      case "restaurant":
+        return <FaUtensils className="w-6 h-6 text-red-400" />;
+      case "government":
+        return <FaLandmark className="w-6 h-6 text-blue-600" />;
+      default:
+        return <FaEllipsisH className="w-6 h-6 text-gray-400" />; // Default icon for other categories
+    }
+  };  
+  
   // Sample transaction data
   const transactions = [
     { id: 1, type: "income", amount: 2500, category: "Employment", date: "2025-01-26" },
@@ -111,10 +142,16 @@ const Dashboard = () => {
             <div className="space-y-4 max-h-[800px] overflow-y-auto">
               {transactions.map((transaction) => (
                 <div key={transaction.id} className="flex items-center justify-between p-3 border-b border-gray-100">
-                  <div>
-                    <p className="font-medium">{transaction.category}</p>
-                    <p className="text-sm text-gray-500">{transaction.date}</p>
+                  {/* Icon on the left */}
+                  <div className="flex items-center space-x-3">
+                    {getCategoryIcon(transaction.category)}
+                    <div>
+                      <p className="font-medium">{transaction.category}</p>
+                      <p className="text-sm text-gray-500">{transaction.date}</p>
+                    </div>
                   </div>
+                  
+                  {/* Amount on the right */}
                   <span className={`font-semibold ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                     {transaction.type === 'income' ? '+' : ''}{transaction.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                   </span>
