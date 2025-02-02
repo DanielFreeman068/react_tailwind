@@ -57,7 +57,7 @@ return (
                         Welcome to your all-in-one Financial Tracker
                     </h1>
                     <p className="text-lg text-gray-900 font-bold text-center mt-2 text-gray-300">
-                        The world’s leading Financial Platform
+                        The world's leading Financial Platform
                     </p>
                     {/* should the form just be a button taking you to the signup and if youre already logged in it just says something else and if so what would it be. unless you can only do the about page when youre not logged in but then the nav would need profile and nav links t taken out and logout to switch to login or signup */}
                     {/* Signup Form */}

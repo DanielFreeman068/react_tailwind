@@ -166,7 +166,7 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-            <a className="text-blue-400 hover:underline" href="/forms">View all</a>
+            <a className="text-blue-400 hover:underline" href="/history">View all</a>
           </div>
         </div>
       </div>
