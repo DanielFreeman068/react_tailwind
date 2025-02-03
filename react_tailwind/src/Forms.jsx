@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoExitOutline } from "react-icons/io5";
+import { IoReturnDownBack } from "react-icons/io5";
 import compassLogo from './compassLogo.png'
 
 const Forms = () => {
@@ -76,8 +76,8 @@ const Forms = () => {
 
                     {selectedOption === "income" && formActive &&
                     <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
-                        <button className="text-gray flex items-center float-right hover:text-dark-blue" onClick={() => setFormActive(false)}>
-                            <IoExitOutline className="w-6 h-6" />
+                        <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
+                            <IoReturnDownBack className="w-6 h-6" />
                         </button>
                         <div className="text-center flex flex-col gap-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Income</h1>
@@ -99,8 +99,8 @@ const Forms = () => {
                     }
                     {selectedOption === "expense" && formActive &&
                     <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
-                        <button className="text-gray flex items-center float-right hover:text-dark-blue" onClick={() => setFormActive(false)}>
-                            <IoExitOutline className="w-6 h-6" />
+                        <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
+                            <IoReturnDownBack className="w-6 h-6" />
                         </button>
                         <div className="text-center flex flex-col gap-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Expense</h1>
@@ -125,8 +125,8 @@ const Forms = () => {
                     }
                     {selectedOption === "savings" && formActive &&
                     <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
-                        <button className="text-gray flex items-center float-right hover:text-dark-blue" onClick={() => setFormActive(false)}>
-                            <IoExitOutline className="w-6 h-6" />
+                        <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
+                            <IoReturnDownBack className="w-6 h-6" />
                         </button>
                         <div className="text-center flex flex-col gap-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Savings</h1>
@@ -145,8 +145,8 @@ const Forms = () => {
                     }
                     {selectedOption === "debt" && formActive &&
                     <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
-                        <button className="text-gray flex items-center float-right hover:text-dark-blue" onClick={() => setFormActive(false)}>
-                            <IoExitOutline className="w-6 h-6" />
+                        <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
+                            <IoReturnDownBack className="w-6 h-6" />
                         </button>
                         <div className="text-center flex flex-col gap-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Debt</h1>
