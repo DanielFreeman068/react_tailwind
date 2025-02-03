@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import compassLogo from './compassLogo.png';
 
-const About = () => {
+const Budget = () => {
 const [isOpen, setIsOpen] = useState(false);
 
 const toggleSidebar = () => setIsOpen(!isOpen);
@@ -35,7 +35,7 @@ return (
             <div className="flex px-4 pt-4 justify-between border-b border-[#284b74] pb-5">
                 <div className="flex items-center">
                     <button className="lg:hidden p-2 text-black text-3xl md:text-4xl mr-3" onClick={toggleSidebar}>☰</button>
-                    <h1 className="text-dark-blue text-xl md:text-3xl">About us</h1>
+                    <h1 className="text-dark-blue text-xl md:text-3xl">Budgeting</h1>
                 </div>
                 <div className="flex items-center">
                     <h1 className="text-dark-blue text-2xl mr-4">Daniel</h1>
@@ -44,11 +44,12 @@ return (
             </div>
             {/* main content */}
             <div className="flex flex-col custom-large:flex-row gap-4">
-                will have about us and mission plus testimonals plus images and AOS
+                will have budgeting goals per category with total budgeting goal listed, saving goals with total savings listed, debt per category like student loans, credit card loans etc with total debt listed
+                <h1>hi</h1>
             </div>
         </div>
     </div>
     );
 };
 
-export default About;
+export default Budget;

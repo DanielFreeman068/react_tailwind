@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Dashboard from './App';
 import Forms from './Forms';
-import About from './About'
+import Budget from './Budget';
 
 // Import necessary components for routing
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   { path: '/', element: <Dashboard /> },
   { path: '/forms', element: <Forms /> },
   { path: '/history', element: <Forms /> },
-  { path: '/about', element: <About /> },
+  { path: '/budget', element: <Budget /> },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

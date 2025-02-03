@@ -23,14 +23,14 @@ const Forms = () => {
                     <div className={`lg:w-1/5 w-[300px] fixed bg-dark-blue text-white p-4 h-screen flex flex-col lg:top-0 transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}>
                         <button className="lg:hidden absolute top-4 right-4 text-white text-3xl" onClick={toggleSidebar}>&times;</button>
                         <div className="text-center">
-                            <img src={compassLogo} alt="Compass Logo" className="mx-auto w-[200px]" />
+                            <img src={compassLogo} alt="Compass Logo" className="mx-auto w-[150px]" />
                             <h2 className="text-2xl mb-4">Cash Compass</h2>
                         </div>
                         <ul>
                             <li><a href="/" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">Dashboard</a></li>
                             <li><a href="/forms" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">Forms</a></li>
                             <li><a href="/history" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">History</a></li>
-                            <li><a href="/about" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">About Us</a></li>
+                            <li><a href="/budget" className="block py-2 px-4 rounded-md hover:bg-hl-blue hover:text-dark-blue">Budgeting</a></li>
                         </ul>
                         <div className="flex-grow" />
                         <div className="mb-4">
@@ -64,10 +64,10 @@ const Forms = () => {
                             </button>
                         </div>
                         <div className="flex md:flex-row flex-col gap-10 md:gap-20 mx-auto">
-                            <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("savings")}>
+                            <button className="bg-[url(./savingsMobile.png)] md:bg-[url(./savings.png)] bg-cover md:bg-cover w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("savings")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Savings</h1>
                             </button>
-                            <button className="bg-blue-300 w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("debt")}>
+                            <button className="bg-[url(./debtMobile.png)] md:bg-[url(./)] bg-cover md:bg-cover w-[350px] h-[150px] md:h-[300px] rounded-lg flex" onClick={()=>handleOption("debt")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Debt</h1>
                             </button>
                         </div>
