@@ -149,7 +149,7 @@ const Dashboard = () => {
           <div className="w-full height-full custom-large:w-[400px] bg-white rounded-lg shadow-md p-4 mt-4">
             <h2 className="text-xl font-semibold mb-4 text-dark-blue">Recent Transactions</h2>
             <div className="space-y-4 max-h-[900px] overflow-y-auto">
-            {transactions.slice(-10).map((transaction) => (
+            {transactions.slice(0, 10).map((transaction) => (
               <div key={transaction.id} className="flex items-center justify-between p-3 border-b border-gray-100">
                 {/* Icon on the left */}
                 <div className="flex items-center space-x-3">
