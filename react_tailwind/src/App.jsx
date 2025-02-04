@@ -82,7 +82,7 @@ const Dashboard = () => {
     { id: 11, type: "expense", amount: -35, category: "Other", date: "2025-01-16" },
     { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
   ];  
-
+  
   return (
     <div className="flex min-h-screen bg-bg-gray">
       {/* navbar */}
