@@ -19,6 +19,14 @@ const budgetItems = [
     { icon: FaBook, title: "Education", amount: 250, color: "text-orange-500" },
     { icon: FaLandmark, title: "Government", amount: 250, color: "text-blue-600" }
 ];
+const savingItems = [
+    { title: "Travel to Dubai", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+    { title: "Fix Car Transmission", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+    { title: "Travel to Dubai", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+    { title: "Travel to Dubai", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+    { title: "Travel to Dubai", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+    { title: "Travel to Dubai", goalAmount: 250, currentAmount: 10, color: "text-gray-500" },
+];
 
 return (
     <div className="flex min-h-screen bg-bg-gray">
@@ -58,6 +66,7 @@ return (
             </div>
             {/* main content */}
             <div className="flex flex-col gap-4 justify-center">
+                {/* budgeting section */}
                 {/* will have budgeting goals per category with total budgeting goal listed, saving goals with total savings listed, debt per category like student loans, credit card loans etc with total debt listed */}
                 <div className="w-full max-w-7xl mx-auto px-4">
                     <h1 className="text-gray-500 text-xl my-4">Budgeting Goals</h1>
@@ -83,6 +92,7 @@ return (
                         ))}
                     </div>
                 </div>
+                {/* savings section */}
                 <div className="w-full max-w-7xl mx-auto px-4">
                     <h1 className="text-gray-500 text-xl my-4">Savings Goals</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
