@@ -57,7 +57,7 @@ return (
                 </div>
             </div>
             {/* main content */}
-            <div className="flex flex-col custom-large:flex-row gap-4 justify-center">
+            <div className="flex flex-col gap-4 justify-center">
                 {/* will have budgeting goals per category with total budgeting goal listed, saving goals with total savings listed, debt per category like student loans, credit card loans etc with total debt listed */}
                 <div className="w-full max-w-7xl mx-auto px-4">
                     <h1 className="text-gray-500 text-xl my-4">Budgeting Goals</h1>
@@ -67,11 +67,35 @@ return (
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-4">
                                     <div className="flex-shrink-0">
-                                    <item.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${item.color}`} />
+                                        <item.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${item.color}`} />
                                     </div>
-                                    <div className="flex flex-col min-w-0">
-                                    <h2 className="text-gray-500 text-sm sm:text-base truncate">{item.title}</h2>
-                                    <p className="font-bold text-base sm:text-lg">${item.amount.toFixed(2)}</p>
+                                    <div className="flex flex-col min-w-0 max-w-[150px] lg:max-w-[110px] xl:max-w-[150px]">
+                                        <h2 className="text-gray-500 text-sm sm:text-base truncate">{item.title}</h2>
+                                        <p className="font-bold text-base sm:text-lg">${item.amount.toFixed(2)}</p>
+                                    </div>
+                                </div>
+                                <button className="flex-shrink-0 flex items-center gap-2 border-2 border-dark-blue rounded-lg p-2 text-dark-blue hover:text-blue-300 hover:border-blue-300 text-sm sm:text-base transition-colors duration-200">
+                                    <span className="hidden custom-large:inline">Adjust</span>
+                                    <FiEdit3 className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="w-full max-w-7xl mx-auto px-4">
+                    <h1 className="text-gray-500 text-xl my-4">Savings Goals</h1>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {budgetItems.map((item, index) => (
+                        <div key={index}className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="flex-shrink-0">
+                                        <item.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${item.color}`} />
+                                    </div>
+                                    <div className="flex flex-col min-w-0 max-w-[150px] lg:max-w-[110px] xl:max-w-[150px]">
+                                        <h2 className="text-gray-500 text-sm sm:text-base truncate">{item.title}</h2>
+                                        <p className="font-bold text-base sm:text-lg">${item.amount.toFixed(2)}</p>
                                     </div>
                                 </div>
                                 <button className="flex-shrink-0 flex items-center gap-2 border-2 border-dark-blue rounded-lg p-2 text-dark-blue hover:text-blue-300 hover:border-blue-300 text-sm sm:text-base transition-colors duration-200">

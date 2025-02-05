@@ -56,18 +56,18 @@ const Forms = () => {
                     {!formActive &&
                     <div className="flex flex-col justify-between mx-auto mt-20 gap-10 md:gap-20">
                         <div className="flex md:flex-row flex-col gap-10 md:gap-20 mx-auto">
-                            <button className="bg-[url(./incomeMobile2.png)] md:bg-[url(./income.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex" onClick={()=>handleOption("income")}>
+                            <button className="bg-[url(./incomeMobile2.png)] md:bg-[url(./income.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex shadow-md hover:shadow-lg transition-shadow duration-200" onClick={()=>handleOption("income")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Income</h1>
                             </button>
-                            <button className="bg-[url(./expenseMobile.png)] md:bg-[url(./expense.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex" onClick={()=>handleOption("expense")}>
+                            <button className="bg-[url(./expenseMobile.png)] md:bg-[url(./expense.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex shadow-md hover:shadow-lg transition-shadow duration-200" onClick={()=>handleOption("expense")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Expense</h1>
                             </button>
                         </div>
                         <div className="flex md:flex-row flex-col gap-10 md:gap-20 mx-auto">
-                            <button className="bg-[url(./savingsMobile.png)] md:bg-[url(./savings2.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex" onClick={()=>handleOption("savings")}>
+                            <button className="bg-[url(./savingsMobile.png)] md:bg-[url(./savings2.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex shadow-md hover:shadow-lg transition-shadow duration-200" onClick={()=>handleOption("savings")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Savings</h1>
                             </button>
-                            <button className="bg-[url(./debtMobile.png)] md:bg-[url(./debt.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex" onClick={()=>handleOption("debt")}>
+                            <button className="bg-[url(./debtMobile.png)] md:bg-[url(./debt2.png)] bg-cover md:bg-cover w-[300px] h-[150px] md:h-[250px] lg:w-[350px] rounded-2xl flex shadow-md hover:shadow-lg transition-shadow duration-200" onClick={()=>handleOption("debt")}>
                                 <h1 className="text-4xl ml-8 mt-6 text-dark-blue">Debt</h1>
                             </button>
                         </div>
