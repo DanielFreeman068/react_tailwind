@@ -101,9 +101,6 @@ const Dashboard = () => {
   }
   const percent = calculatePercentageIncrease(startAmount, currentAmount);
 
-  // goal progress
-  const progress = 57;
-
   // savings total
   const totalSavings = 2592;
 
@@ -122,16 +119,20 @@ const Dashboard = () => {
 
   const totalBudget = budgetItems.reduce((sum, item) => sum + item.amount, 0);
 
-  //saving goal display mock data
+  // saving goal display mock data
   const savingItems = [
-    { title: "Fix Car Transmission", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 200 },
+    { title: "Fix Car Transmission", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 197 },
     { title: "Travel to Dubai", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 10 },
     { title: "Buy New Laptop", startDate: "01 Jan 25", goalDate: "15 Aug 26", goalAmount: 1200, currentAmount: 300 },
     { title: "Home Renovation", startDate: "01 Feb 25", goalDate: "10 Dec 26", goalAmount: 5000, currentAmount: 750 },
     { title: "Learn a New Language", startDate: "01 Mar 25", goalDate: "01 Mar 26", goalAmount: 200, currentAmount: 50 },
     { title: "Upgrade Home Office", startDate: "01 Apr 25", goalDate: "01 Oct 26", goalAmount: 1500, currentAmount: 1000 },
   ];
-  
+
+  // progress bar math
+  const displayedGoal = savingItems[0];
+  const progress = (displayedGoal.currentAmount / displayedGoal.goalAmount) * 100;
+
   return (
     <div className="flex min-h-screen bg-bg-gray">
       {/* navbar */}
@@ -204,21 +205,25 @@ const Dashboard = () => {
               {/* goals and savings boxz */}
               <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full space-y-2">
                 {/* goals section */}
-                <div className="flex justify-between items-center">
-                  <h1 className="text-xl text-dark-blue">Goals</h1>
-                  <a className="text-blue-400 hover:underline" href="/budget">View all</a>
-                </div>
-                <div className="flex items-center gap-4">
-                  <TbTargetArrow className="text-red-600 w-16 h-16" />
-                  <div className="flex flex-col w-full">
-                    <h1 className="text-xl text-dark-blue">Travel to Dubai</h1>
-                    {/* ! progress bar */}
-                    <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
-                      <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                {savingItems.slice(0, 1).map((item) => (
+                <div key={item.title}>
+                  <div className="flex justify-between items-center">
+                    <h1 className="text-xl text-dark-blue">Goals</h1>
+                    <a className="text-blue-400 hover:underline" href="/budget">View all</a>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <TbTargetArrow className="text-red-600 w-16 h-16" />
+                    <div className="flex flex-col w-full">
+                      <h1 className="text-xl text-dark-blue">{item.title}</h1>
+                      {/* progress bar */}
+                      <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                      </div>
+                      <span className="text-sm text-gray-600 mt-1">{progress.toFixed(1)}% Completed</span>
                     </div>
-                    <span className="text-sm text-gray-600 mt-1">{progress}% Completed</span>
                   </div>
                 </div>
+                ))}
                 {/* savings section */}
                 <div className="flex flex-col gap-2">
                   <h1 className="text-xl text-dark-blue">Total Savings</h1>
@@ -248,6 +253,12 @@ const Dashboard = () => {
               {/* Earning overview section */}
               <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
                 <h1 className="text-dark-blue text-xl">Earning Overview</h1>
+                <div className="flex space-y-1">
+                  <div className="w-1/2 bg-gray-200 rounded-full h-4 mt-2">
+                      <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                  </div>
+                  <span className="text-sm text-gray-600 mt-1">{progress.toFixed(1)}% Groceries</span>
+                </div>
               </div>
             </div>
           </div>
