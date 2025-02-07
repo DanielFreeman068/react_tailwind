@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+// imports for charts/bar
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
+// up down arrow icons
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
+// icons for categories
 import { FaBriefcase, FaHome, FaShoppingBasket, FaChartLine, FaCar, FaHeartbeat, FaFilm, FaGift, FaBook, FaUtensils, FaEllipsisH, FaLandmark } from "react-icons/fa";
+// target icon import
+import { TbTargetArrow } from "react-icons/tb";
 import compassLogo from './compassLogo.png';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -81,7 +87,50 @@ const Dashboard = () => {
     { id: 10, type: "expense", amount: -35, category: "Restaurant", date: "2025-01-17" },
     { id: 11, type: "expense", amount: -35, category: "Other", date: "2025-01-16" },
     { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
-  ];  
+  ];
+
+  // percent up/down math will be the starting amount from the given time frame to now
+  const startAmount = 9487;
+  const currentAmount = 13013;
+  function calculatePercentageIncrease(startAmount, currentAmount) {
+    if (startAmount === 0) {
+        return currentAmount > 0 ? 100 : 0;
+    }
+    const percentageIncrease = ((currentAmount - startAmount) / startAmount) * 100;
+    return percentageIncrease;
+  }
+  const percent = calculatePercentageIncrease(startAmount, currentAmount);
+
+  // goal progress
+  const progress = 57;
+
+  // savings total
+  const totalSavings = 2592;
+
+  // budget data
+  const budgetItems = [
+      { icon: FaHome, title: "Housing", amount: 250, color: "text-gray-500" },
+      { icon: FaHeartbeat, title: "Healthcare", amount: 250, color: "text-red-500" },
+      { icon: FaCar, title: "Transportation", amount: 250, color: "text-yellow-500" },
+      { icon: FaShoppingBasket, title: "Groceries", amount: 250, color: "text-green-500" },
+      { icon: FaFilm, title: "Entertainment", amount: 250, color: "text-purple-500" },
+      { icon: FaGift, title: "Gifts", amount: 250, color: "text-pink-500" },
+      { icon: FaUtensils, title: "Restaurant & Dining", amount: 250, color: "text-red-400" },
+      { icon: FaBook, title: "Education", amount: 250, color: "text-orange-500" },
+      { icon: FaLandmark, title: "Government", amount: 250, color: "text-blue-600" }
+  ];
+
+  const totalBudget = budgetItems.reduce((sum, item) => sum + item.amount, 0);
+
+  //saving goal display mock data
+  const savingItems = [
+    { title: "Fix Car Transmission", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 200 },
+    { title: "Travel to Dubai", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 10 },
+    { title: "Buy New Laptop", startDate: "01 Jan 25", goalDate: "15 Aug 26", goalAmount: 1200, currentAmount: 300 },
+    { title: "Home Renovation", startDate: "01 Feb 25", goalDate: "10 Dec 26", goalAmount: 5000, currentAmount: 750 },
+    { title: "Learn a New Language", startDate: "01 Mar 25", goalDate: "01 Mar 26", goalAmount: 200, currentAmount: 50 },
+    { title: "Upgrade Home Office", startDate: "01 Apr 25", goalDate: "01 Oct 26", goalAmount: 1500, currentAmount: 1000 },
+  ];
   
   return (
     <div className="flex min-h-screen bg-bg-gray">
@@ -123,8 +172,59 @@ const Dashboard = () => {
         <div className="flex flex-col custom-large:flex-row gap-4">
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-              <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full">Box 1</div>
-              <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full">Box 2</div>
+
+              {/* total balance box */}
+              <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full">
+                <div className="flex justify-between">
+                  <div className="flex flex-col gap-4">
+                    <h1 className="text-xl text-dark-blue">Total Balance</h1>
+                    <h1 className="font-bold text-3xl text-dark-blue">USD {currentAmount.toFixed(2)}</h1>
+                  </div>
+                  {/* percent display */}
+                  <div className="flex gap-4">
+                    {percent > 0 ? 
+                    <div className="flex items-center justify-center w-6 h-6 bg-green-500 rounded-full text-white">
+                      <AiOutlineArrowUp size={18} />
+                    </div>
+                    :
+                    <div className="flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-white">
+                      <AiOutlineArrowDown size={18} />
+                    </div>
+                    }
+                    <h1 className="text-green-500">{percent.toFixed(2)}%</h1>
+                  </div>
+                </div>
+                {/* Monthly budget */}
+                <div className="flex flex-col gap-2 mt-4">
+                  <h1 className="text-xl text-dark-blue">Total Monthly Budget</h1>
+                  <h1 className="font-bold text-3xl text-dark-blue">${totalBudget.toFixed(2)}</h1>
+                </div>
+              </div>
+
+              {/* goals and savings boxz */}
+              <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full space-y-2">
+                {/* goals section */}
+                <div className="flex justify-between items-center">
+                  <h1 className="text-xl text-dark-blue">Goals</h1>
+                  <a className="text-blue-400 hover:underline" href="/budget">View all</a>
+                </div>
+                <div className="flex items-center gap-4">
+                  <TbTargetArrow className="text-red-600 w-16 h-16" />
+                  <div className="flex flex-col w-full">
+                    <h1 className="text-xl text-dark-blue">Travel to Dubai</h1>
+                    {/* ! progress bar */}
+                    <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+                      <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                    </div>
+                    <span className="text-sm text-gray-600 mt-1">{progress}% Completed</span>
+                  </div>
+                </div>
+                {/* savings section */}
+                <div className="flex flex-col gap-2">
+                  <h1 className="text-xl text-dark-blue">Total Savings</h1>
+                  <h1 className="text-dark-blue text-2xl font-bold">${totalSavings.toFixed(2)}</h1>
+                </div>
+              </div>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md mb-4">
               {/* Dropdown */}
@@ -141,8 +241,14 @@ const Dashboard = () => {
               <Bar data={chartDataActive} options={chartOptions} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">Box A</div>
-              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">Box B</div>
+              {/* spending overview section */}
+              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
+                <h1 className="text-dark-blue text-xl">Spending Overview</h1>
+              </div>
+              {/* Earning overview section */}
+              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
+                <h1 className="text-dark-blue text-xl">Earning Overview</h1>
+              </div>
             </div>
           </div>
           {/* transactions (last 10) */}
