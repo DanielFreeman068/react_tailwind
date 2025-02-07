@@ -22,12 +22,12 @@ const budgetItems = [
     { icon: FaLandmark, title: "Government", amount: 250, color: "text-blue-600" }
 ];
 const savingItems = [
-    { title: "Fix Car Transmission", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 10 },
+    { title: "Fix Car Transmission", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 200 },
     { title: "Travel to Dubai", startDate: "01 Jan 25", goalDate: "27 May 26", goalAmount: 250, currentAmount: 10 },
     { title: "Buy New Laptop", startDate: "01 Jan 25", goalDate: "15 Aug 26", goalAmount: 1200, currentAmount: 300 },
     { title: "Home Renovation", startDate: "01 Feb 25", goalDate: "10 Dec 26", goalAmount: 5000, currentAmount: 750 },
     { title: "Learn a New Language", startDate: "01 Mar 25", goalDate: "01 Mar 26", goalAmount: 200, currentAmount: 50 },
-    { title: "Upgrade Home Office", startDate: "01 Apr 25", goalDate: "01 Oct 26", goalAmount: 1500, currentAmount: 200 },
+    { title: "Upgrade Home Office", startDate: "01 Apr 25", goalDate: "01 Oct 26", goalAmount: 1500, currentAmount: 1000 },
 ];
 
 return (
@@ -78,7 +78,7 @@ return (
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-4">
                                     <div className="flex-shrink-0">
-                                        <item.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${item.color}`} />
+                                        <item.icon className={`w-8 h-8 ${item.color}`} />
                                     </div>
                                     <div className="flex flex-col min-w-0 max-w-[150px] lg:max-w-[110px] xl:max-w-[150px]">
                                         <h2 className="text-gray-500 text-sm sm:text-base truncate">{item.title}</h2>
@@ -100,14 +100,14 @@ return (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {savingItems.map((item, index) => (
                         <div key={index}className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between">
                                 <div className="flex flex-col">
                                     <h1 className="font-bold text-lg text-black">{item.title}</h1>
                                     <h1 className="text-gray-600 text-md">{item.startDate} - {item.goalDate}</h1>
                                 </div>
-                                <TbTargetArrow className="text-red-600 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
+                                <TbTargetArrow className="text-red-600 w-8 h-8" />
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between gap-4">
                                 <div className="flex flex-col my-4">
                                     <div className="flex flex-col my-2">
                                         <p className="font-bold text-base sm:text-lg">${item.currentAmount.toFixed(2)}</p>
@@ -115,18 +115,18 @@ return (
                                     </div>
                                     <div className="flex flex-col my-2">
                                         <p className="font-bold text-base sm:text-lg">${item.goalAmount.toFixed(2)}</p>
-                                        <p className="text-gray-600 text-base sm:text-md">Total Goal</p>
+                                        <p className="text-gray-600 text-base sm:text-md">Target Goal</p>
                                     </div>
                                 </div>
                                 {/* speedometer */}
-                                <Speedometer value={12} maxValue={20} />
+                                <Speedometer value={item.currentAmount} maxValue={item.goalAmount} />
                             </div>
                             <div className="flex justify-between items-center">
                                 <button className="text-red-600 hover:text-red-900 hover:border-b-2 hover:border-red-900 text-md transition-colors duration-200">
                                     remove
                                 </button>
                                 <button className="flex-shrink-0 flex items-center gap-2 border-2 border-dark-blue rounded-lg p-2 text-dark-blue hover:text-blue-300 hover:border-blue-300 text-sm sm:text-base transition-colors duration-200">
-                                    <span className="hidden custom-large:inline">Adjust</span>
+                                    <span>Adjust</span>
                                     <FiEdit3 className="w-4 h-4" />
                                 </button>
                             </div>
