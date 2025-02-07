@@ -89,9 +89,40 @@ const Dashboard = () => {
     { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
   ];
 
+  // expenses
+  const expenses = [
+    { id: 1, type: "expense", amount: -50, category: "Groceries", date: "2025-01-10" },
+    { id: 2, type: "expense", amount: -80, category: "Living", date: "2025-01-25" },
+    { id: 3, type: "expense", amount: -120, category: "Transportation", date: "2025-02-05" },
+    { id: 4, type: "expense", amount: -30, category: "Entertainment", date: "2025-02-15" },
+    { id: 5, type: "expense", amount: -200, category: "Gifts", date: "2025-03-01" },
+    { id: 6, type: "expense", amount: -60, category: "Restaurant", date: "2025-03-10" },
+    { id: 7, type: "expense", amount: -90, category: "Healthcare", date: "2025-03-20" },
+    { id: 8, type: "expense", amount: -40, category: "Other", date: "2025-04-01" },
+    { id: 9, type: "expense", amount: -75, category: "Groceries", date: "2025-04-10" },
+    { id: 10, type: "expense", amount: -100, category: "Living", date: "2025-04-25" },
+    { id: 11, type: "expense", amount: -90, category: "Transportation", date: "2025-05-05" },
+    { id: 12, type: "expense", amount: -50, category: "Entertainment", date: "2025-05-15" },
+    { id: 13, type: "expense", amount: -150, category: "Gifts", date: "2025-06-01" },
+    { id: 14, type: "expense", amount: -80, category: "Restaurant", date: "2025-06-10" },
+    { id: 15, type: "expense", amount: -120, category: "Healthcare", date: "2025-06-20" },
+    { id: 16, type: "expense", amount: -60, category: "Other", date: "2025-07-01" },
+  ];
+
+  // Group expenses by category
+  const groupedExpenses = expenses.reduce((acc, expense) => {
+    if (!acc[expense.category]) {
+      acc[expense.category] = 0;
+    }
+    acc[expense.category] += Math.abs(expense.amount); // Convert to positive values
+    return acc;
+  }, {});
+
+  const totalExpenses = Math.abs(expenses.reduce((sum, expense) => sum + expense.amount, 0));
+
   // percent up/down math will be the starting amount from the given time frame to now
   const startAmount = 9487;
-  const currentAmount = 13013;
+  const currentAmount = 11013;
   function calculatePercentageIncrease(startAmount, currentAmount) {
     if (startAmount === 0) {
         return currentAmount > 0 ? 100 : 0;
@@ -130,7 +161,7 @@ const Dashboard = () => {
   ];
 
   // progress bar math
-  const displayedGoal = savingItems[0];
+  const displayedGoal = savingItems[Math.floor(Math.random() * savingItems.length)];
   const progress = (displayedGoal.currentAmount / displayedGoal.goalAmount) * 100;
 
   return (
@@ -192,42 +223,38 @@ const Dashboard = () => {
                       <AiOutlineArrowDown size={18} />
                     </div>
                     }
-                    <h1 className="text-green-500">{percent.toFixed(2)}%</h1>
+                    <h1 className={percent > 0 ? `text-green-500` : `text-red-500`}>{percent.toFixed(2)}%</h1>
                   </div>
                 </div>
                 {/* Monthly budget */}
                 <div className="flex flex-col gap-2 mt-4">
-                  <h1 className="text-xl text-dark-blue">Total Monthly Budget</h1>
-                  <h1 className="font-bold text-3xl text-dark-blue">${totalBudget.toFixed(2)}</h1>
+                  <h1 className="text-xl text-dark-blue">Total Savings</h1>
+                  <h1 className="font-bold text-3xl text-dark-blue">${totalSavings.toFixed(2)}</h1>
                 </div>
               </div>
 
               {/* goals and savings boxz */}
               <div className="bg-white p-4 rounded-lg shadow-md h-[222px] w-full space-y-2">
                 {/* goals section */}
-                {savingItems.slice(0, 1).map((item) => (
-                <div key={item.title}>
-                  <div className="flex justify-between items-center">
-                    <h1 className="text-xl text-dark-blue">Goals</h1>
-                    <a className="text-blue-400 hover:underline" href="/budget">View all</a>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <TbTargetArrow className="text-red-600 w-16 h-16" />
-                    <div className="flex flex-col w-full">
-                      <h1 className="text-xl text-dark-blue">{item.title}</h1>
-                      {/* progress bar */}
-                      <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
-                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
-                      </div>
-                      <span className="text-sm text-gray-600 mt-1">{progress.toFixed(1)}% Completed</span>
+                <div className="flex justify-between items-center">
+                  <h1 className="text-xl text-dark-blue">Goals</h1>
+                  <a className="text-blue-400 hover:underline" href="/budget">View all</a>
+                </div>
+                <div className="flex items-center gap-4">
+                  <TbTargetArrow className="text-red-600 w-16 h-16" />
+                  <div className="flex flex-col w-full">
+                    <h1 className="text-xl text-dark-blue">{displayedGoal.title}</h1>
+                    {/* progress bar */}
+                    <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+                      <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
                     </div>
+                    <span className="text-sm text-gray-600 mt-1">{progress.toFixed(1)}% Completed</span>
                   </div>
                 </div>
-                ))}
                 {/* savings section */}
                 <div className="flex flex-col gap-2">
-                  <h1 className="text-xl text-dark-blue">Total Savings</h1>
-                  <h1 className="text-dark-blue text-2xl font-bold">${totalSavings.toFixed(2)}</h1>
+                  <h1 className="text-xl text-dark-blue">Total Monthly Budget</h1>
+                  <h1 className="text-dark-blue text-2xl font-bold">${totalBudget.toFixed(2)}</h1>
                 </div>
               </div>
             </div>
@@ -253,11 +280,15 @@ const Dashboard = () => {
               {/* Earning overview section */}
               <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
                 <h1 className="text-dark-blue text-xl">Earning Overview</h1>
-                <div className="flex space-y-1">
-                  <div className="w-1/2 bg-gray-200 rounded-full h-4 mt-2">
-                      <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
-                  </div>
-                  <span className="text-sm text-gray-600 mt-1">{progress.toFixed(1)}% Groceries</span>
+                <div className="flex space-y-2 flex-col">
+                  {Object.entries(groupedExpenses).map(([category, total]) => (
+                    <div className="flex" key={category}>
+                      <div className="flex w-3/5 bg-gray-200 rounded-full h-4 mt-2">
+                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${total > 0 ? ((total / totalExpenses) * 100).toFixed(1) : 0}%`}}></div>
+                      </div>
+                      <span className="text-sm text-gray-600 mt-1">{total > 0 ? ((total / totalExpenses) * 100).toFixed(1) : 0}% {category}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

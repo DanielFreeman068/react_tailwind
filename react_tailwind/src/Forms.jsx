@@ -52,6 +52,10 @@ const Forms = () => {
                             <img className="h-12 w-auto rounded-full" src="https://tse1.mm.bing.net/th?id=OIP.cEvbluCvNFD_k4wC3k-_UwHaHa&pid=Api" alt="profile"/>
                         </div>
                     </div>
+                    {/* income has where, date, amount and desc with labels for each input */}
+                    {/* expense has where, date, amount, and desc with labels for each input */}
+                    {/* saving has where such as savings or one of the goals, going in or out, date, amount, and desc with labels for each input */}
+                    {/* debt has where, date, going in or out, amount, and desc with labels for each input */}
                     {/* main content */}
                     {!formActive &&
                     <div className="flex flex-col justify-between mx-auto mt-20 gap-10 md:gap-20">

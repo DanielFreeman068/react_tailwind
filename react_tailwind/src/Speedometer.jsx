@@ -11,7 +11,7 @@ const Speedometer = ({ value, maxValue }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const frames = 100;
+        const frames = 40;
         const angleIncrement = targetAngle / frames;
         const progressIncrement = targetProgress;
         let currentAngle = 0;
