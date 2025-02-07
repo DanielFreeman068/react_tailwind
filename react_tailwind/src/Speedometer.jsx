@@ -11,26 +11,36 @@ const Speedometer = ({ value, maxValue }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const frames = 60;
+        const frames = 100;
         const angleIncrement = targetAngle / frames;
-        const progressIncrement = targetProgress / 18;
+        const progressIncrement = targetProgress;
         let currentAngle = 0;
         let currentProgress = 0;
 
-        const animate = () => {
-            if (currentAngle < targetAngle || currentProgress < targetProgress) {
-                currentAngle += angleIncrement;
+        const animateBar = () => {
+            if (currentProgress < targetProgress) {
                 currentProgress += progressIncrement;
-                setAngle(currentAngle);
                 setProgress(currentProgress); 
-                requestAnimationFrame(animate);
+                requestAnimationFrame(animateBar);
             } else {
                 setAngle(targetAngle);
-                setProgress(targetProgress);
             }
         };
 
-        animate();
+        const animateNeedle = () => {
+            if (currentAngle < targetAngle) {
+                currentAngle += angleIncrement;
+                setAngle(currentAngle);
+                requestAnimationFrame(animateNeedle);
+            } else {
+                setAngle(targetAngle);
+            }
+        }
+        setTimeout(() => {
+            animateBar();
+            animateNeedle();
+        }, 500);
+
     }, [targetAngle, targetProgress]);
 
     // Needle calculations

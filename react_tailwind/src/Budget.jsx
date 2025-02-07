@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import compassLogo from './compassLogo.png';
+// edit icon import
 import { FiEdit3 } from "react-icons/fi";
-import { TbTargetArrow } from "react-icons/tb";
-import { FaHome, FaShoppingBasket, FaCar, FaHeartbeat, FaFilm, FaGift, FaBook, FaUtensils, FaLandmark } from "react-icons/fa";
+// budget and debt section icons imports
+import { FaHome, FaShoppingBasket, FaCar, FaHeartbeat, FaFilm, FaGift, FaBook, FaUtensils, FaLandmark, FaGraduationCap, FaCreditCard, FaUser, FaBriefcase, FaFileInvoiceDollar, FaMoneyBillWave } from "react-icons/fa";
+// speedometer component and target imports
 import Speedometer from "./Speedometer";
+import { TbTargetArrow } from "react-icons/tb";
 
 const Budget = () => {
 const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +32,66 @@ const savingItems = [
     { title: "Learn a New Language", startDate: "01 Mar 25", goalDate: "01 Mar 26", goalAmount: 200, currentAmount: 50 },
     { title: "Upgrade Home Office", startDate: "01 Apr 25", goalDate: "01 Oct 26", goalAmount: 1500, currentAmount: 1000 },
 ];
+const debtItems = [
+    {
+        icon: FaGraduationCap,
+        title: "Student Loans",
+        currentAmount: 200,
+        color: "text-blue-500",
+        description: "Includes federal and private student loans for tuition, books, housing, and other educational expenses."
+    },
+    {
+        icon: FaCreditCard,
+        title: "Credit Card Debt",
+        currentAmount: 10,
+        color: "text-red-500",
+        description: "Debt from revolving credit cards, including unpaid balances, interest charges, and late fees."
+    },
+    {
+        icon: FaHome,
+        title: "Mortgage",
+        currentAmount: 300,
+        color: "text-green-500",
+        description: "Home loan debt, including first and second mortgages, home equity loans, and refinancing balances."
+    },
+    {
+        icon: FaUser,
+        title: "Personal",
+        currentAmount: 750,
+        color: "text-purple-500",
+        description: "Unsecured loans for personal use, such as debt consolidation, vacations, weddings, or emergencies."
+    },
+    {
+        icon: FaCar,
+        title: "Auto Loans",
+        currentAmount: 50,
+        color: "text-yellow-500",
+        description: "Loans for purchasing or leasing a car, truck, or motorcycle, including financing and leasing agreements."
+    },
+    {
+        icon: FaHeartbeat,
+        title: "Medical Debt",
+        currentAmount: 1000,
+        color: "text-red-500",
+        description: "Outstanding balances for medical expenses, including hospital bills, surgery, prescriptions, and emergency care."
+    },
+    {
+        icon: FaBriefcase,
+        title: "Business Loans",
+        currentAmount: 1000,
+        color: "text-red-900",
+        description: "Loans taken to fund a business, including startup costs, operational expenses, and equipment purchases."
+    },
+    {
+        icon: FaFileInvoiceDollar,
+        title: "Tax Debt",
+        currentAmount: 1000,
+        color: "text-gray-500",
+        description: "Unpaid federal, state, or local taxes, including income tax, property tax, and penalties for late payments."
+    },
+];
+const totalDebt = debtItems.reduce((sum, item) => sum + item.currentAmount, 0);
+// const totalDebt = 0;
 
 return (
     <div className="flex min-h-screen bg-bg-gray">
@@ -132,6 +195,67 @@ return (
                             </div>
                         </div>
                         ))}
+                    </div>
+                </div>
+                {/* debt section */}
+                <div className="w-full max-w-7xl mx-auto px-4">
+                    <h1 className="text-gray-500 text-xl my-4">Debt Tracking</h1>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200 flex justify-center">
+                            <div className="flex flex-col">
+                                <div className="flex justify-center items-center gap-4">
+                                    <FaMoneyBillWave className={`w-12 h-12 text-green-700`} />
+                                    <h1 className="text-xl">Total Debt</h1>
+                                </div>
+                                <h1 className="font-bold text-base sm:text-2xl text-center my-4">${totalDebt.toFixed(2)}</h1>
+                                {totalDebt <= 0 ? <h1 className="text-2xl text-center">Congratulations you are free of debt!</h1> : <h1 className="text-2xl text-center">One step closer to being free of debt!</h1>}
+                            </div>
+                        </div>
+                        {debtItems.map((item, index) => (
+                        <div key={index}className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200">
+                            <div className="flex justify-center items-center gap-4">
+                                <div className="flex-shrink-0">
+                                    <item.icon className={`w-12 h-12 ${item.color}`} />
+                                </div>
+                                <h1 className="text-xl">{item.title}</h1>
+                            </div>
+                            <p className="font-bold text-base sm:text-lg text-center my-4">${item.currentAmount.toFixed(2)}</p>
+                            <p className="text-md text-center">{item.description}</p>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+                {/* resource section */}
+                <div className="w-full max-w-7xl mx-auto px-4">
+                    <h1 className="text-gray-500 text-xl my-4">Resources</h1>
+                    <div className="flex text-center flex-col bg-white p-10 gap-8 rounded-lg shadow-sm hover:shadow-md">
+                        <h1 className="text-2xl font-bold">User Resources</h1>
+                        <div className="flex justify-evenly">
+                            <div className="flex flex-col space-y-4">
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                            </div>
+                            <div className="flex-flex-col space-y-4">
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                                <p>blahblahblahblah</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
