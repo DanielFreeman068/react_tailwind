@@ -9,6 +9,8 @@ import { FaBriefcase, FaHome, FaShoppingBasket, FaChartLine, FaCar, FaHeartbeat,
 // target icon import
 import { TbTargetArrow } from "react-icons/tb";
 import compassLogo from './compassLogo.png';
+//left and right arrows
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -69,7 +71,7 @@ const Dashboard = () => {
       case "government":
         return <FaLandmark className="w-6 h-6 text-blue-600" />;
       default:
-        return <FaEllipsisH className="w-6 h-6 text-gray-400" />; // Default icon for other categories
+        return <FaEllipsisH className="w-6 h-6 text-blue-600" />; // Default icon for other categories
     }
   };  
   
@@ -89,6 +91,20 @@ const Dashboard = () => {
     { id: 12, type: "income", amount: 500, category: "Government", date: "2025-01-15" }
   ];
 
+  // income
+  const incomes = [
+    { id: 1, type: "income", amount: 500, category: "Employment", date: "2025-01-05" },
+    { id: 2, type: "income", amount: 600, category: "Employment", date: "2025-02-10" },
+    { id: 3, type: "income", amount: 200, category: "Gifts", date: "2025-01-15" },
+    { id: 4, type: "income", amount: 250, category: "Gifts", date: "2025-03-05" },
+    { id: 5, type: "income", amount: 300, category: "Investments", date: "2025-02-01" },
+    { id: 6, type: "income", amount: 350, category: "Investments", date: "2025-04-12" },
+    { id: 7, type: "income", amount: 150, category: "Government", date: "2025-02-20" },
+    { id: 8, type: "income", amount: 200, category: "Government", date: "2025-05-18" },
+    { id: 9, type: "income", amount: 400, category: "Other", date: "2025-03-01" },
+    { id: 10, type: "income", amount: 450, category: "Other", date: "2025-06-08" },
+  ];  
+
   // expenses
   const expenses = [
     { id: 1, type: "expense", amount: -50, category: "Groceries", date: "2025-01-10" },
@@ -96,7 +112,7 @@ const Dashboard = () => {
     { id: 3, type: "expense", amount: -120, category: "Transportation", date: "2025-02-05" },
     { id: 4, type: "expense", amount: -30, category: "Entertainment", date: "2025-02-15" },
     { id: 5, type: "expense", amount: -200, category: "Gifts", date: "2025-03-01" },
-    { id: 6, type: "expense", amount: -60, category: "Restaurant", date: "2025-03-10" },
+    { id: 6, type: "expense", amount: -60, category: "Restaurant & Dining", date: "2025-03-10" },
     { id: 7, type: "expense", amount: -90, category: "Healthcare", date: "2025-03-20" },
     { id: 8, type: "expense", amount: -40, category: "Other", date: "2025-04-01" },
     { id: 9, type: "expense", amount: -75, category: "Groceries", date: "2025-04-10" },
@@ -104,21 +120,66 @@ const Dashboard = () => {
     { id: 11, type: "expense", amount: -90, category: "Transportation", date: "2025-05-05" },
     { id: 12, type: "expense", amount: -50, category: "Entertainment", date: "2025-05-15" },
     { id: 13, type: "expense", amount: -150, category: "Gifts", date: "2025-06-01" },
-    { id: 14, type: "expense", amount: -80, category: "Restaurant", date: "2025-06-10" },
+    { id: 14, type: "expense", amount: -80, category: "Restaurant & Dining", date: "2025-06-10" },
     { id: 15, type: "expense", amount: -120, category: "Healthcare", date: "2025-06-20" },
     { id: 16, type: "expense", amount: -60, category: "Other", date: "2025-07-01" },
+    { id: 15, type: "expense", amount: -180, category: "Education", date: "2025-02-23" },
+    { id: 16, type: "expense", amount: -60, category: "Education", date: "2025-09-15" },
   ];
 
-  // Group expenses by category
-  const groupedExpenses = expenses.reduce((acc, expense) => {
-    if (!acc[expense.category]) {
-      acc[expense.category] = 0;
-    }
-    acc[expense.category] += Math.abs(expense.amount); // Convert to positive values
-    return acc;
-  }, {});
+  const [expensePage, setExpensePage] = useState(0);
+  const [incomePage, setIncomePage] = useState(0);
+  const itemsPerPage = 3;
 
-  const totalExpenses = Math.abs(expenses.reduce((sum, expense) => sum + expense.amount, 0));
+  // Function to group and sort data by category
+  const groupAndSort = (data) => {
+    return Object.entries(
+      data.reduce((acc, item) => {
+        if (!acc[item.category]) {
+          acc[item.category] = 0;
+        }
+        acc[item.category] += Math.abs(item.amount);
+        return acc;
+      }, {})
+    ).sort((a, b) => b[1] - a[1]);
+  };
+
+  const groupedExpenses = groupAndSort(expenses);
+  const groupedIncomes = groupAndSort(incomes);
+
+  const totalExpenses = groupedExpenses.reduce((sum, [_, amount]) => sum + amount, 0);
+  const totalIncomes = groupedIncomes.reduce((sum, [_, amount]) => sum + amount, 0);
+
+  const expensePageCount = Math.ceil(groupedExpenses.length / itemsPerPage);
+  const incomePageCount = Math.ceil(groupedIncomes.length / itemsPerPage);
+
+  // Paginate expenses and incomes separately
+  const currentExpenses = groupedExpenses.slice(
+    expensePage * itemsPerPage,
+    (expensePage + 1) * itemsPerPage
+  );
+
+  const currentIncomes = groupedIncomes.slice(
+    incomePage * itemsPerPage,
+    (incomePage + 1) * itemsPerPage
+  );
+
+  // Separate navigation functions for expenses and incomes
+  const nextExpensePage = () => {
+    setExpensePage((prev) => (prev + 1) % expensePageCount);
+  };
+
+  const prevExpensePage = () => {
+    setExpensePage((prev) => (prev - 1 + expensePageCount) % expensePageCount);
+  };
+
+  const nextIncomePage = () => {
+    setIncomePage((prev) => (prev + 1) % incomePageCount);
+  };
+
+  const prevIncomePage = () => {
+    setIncomePage((prev) => (prev - 1 + incomePageCount) % incomePageCount);
+  };
 
   // percent up/down math will be the starting amount from the given time frame to now
   const startAmount = 9487;
@@ -135,6 +196,9 @@ const Dashboard = () => {
   // savings total
   const totalSavings = 2592;
 
+  const formattedSavings = totalSavings.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const formattedBalance = currentAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   // budget data
   const budgetItems = [
       { icon: FaHome, title: "Housing", amount: 250, color: "text-gray-500" },
@@ -149,6 +213,7 @@ const Dashboard = () => {
   ];
 
   const totalBudget = budgetItems.reduce((sum, item) => sum + item.amount, 0);
+  const formattedBudget = totalBudget.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   // saving goal display mock data
   const savingItems = [
@@ -210,7 +275,7 @@ const Dashboard = () => {
                 <div className="flex justify-between">
                   <div className="flex flex-col gap-4">
                     <h1 className="text-xl text-dark-blue">Total Balance</h1>
-                    <h1 className="font-bold text-3xl text-dark-blue">USD {currentAmount.toFixed(2)}</h1>
+                    <h1 className="font-bold text-3xl text-dark-blue">${formattedBalance}</h1>
                   </div>
                   {/* percent display */}
                   <div className="flex gap-4">
@@ -229,7 +294,7 @@ const Dashboard = () => {
                 {/* Monthly budget */}
                 <div className="flex flex-col gap-2 mt-4">
                   <h1 className="text-xl text-dark-blue">Total Savings</h1>
-                  <h1 className="font-bold text-3xl text-dark-blue">${totalSavings.toFixed(2)}</h1>
+                  <h1 className="font-bold text-3xl text-dark-blue">${formattedSavings}</h1>
                 </div>
               </div>
 
@@ -254,7 +319,7 @@ const Dashboard = () => {
                 {/* savings section */}
                 <div className="flex flex-col gap-2">
                   <h1 className="text-xl text-dark-blue">Total Monthly Budget</h1>
-                  <h1 className="text-dark-blue text-2xl font-bold">${totalBudget.toFixed(2)}</h1>
+                  <h1 className="text-dark-blue text-2xl font-bold">${formattedBudget}</h1>
                 </div>
               </div>
             </div>
@@ -275,18 +340,56 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* spending overview section */}
               <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
-                <h1 className="text-dark-blue text-xl">Spending Overview</h1>
-              </div>
-              {/* Earning overview section */}
-              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
-                <h1 className="text-dark-blue text-xl">Earning Overview</h1>
-                <div className="flex space-y-2 flex-col">
-                  {Object.entries(groupedExpenses).map(([category, total]) => (
-                    <div className="flex" key={category}>
-                      <div className="flex w-3/5 bg-gray-200 rounded-full h-4 mt-2">
-                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${total > 0 ? ((total / totalExpenses) * 100).toFixed(1) : 0}%`}}></div>
+                <div className="flex justify-between items-center mb-4">
+                  <h1 className="text-dark-blue text-xl">Spending Overview</h1>
+                  <div className="flex gap-2">
+                    <button onClick={prevExpensePage} className="p-1 rounded-full hover:bg-gray-100" disabled={expensePageCount <= 1}>
+                      <ChevronLeft className="w-5 h-5 text-gray-600" />
+                    </button>
+                    <button onClick={nextExpensePage} className="p-1 rounded-full hover:bg-gray-100" disabled={expensePageCount <= 1}>
+                      <ChevronRight className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+                {/* progress bars */}
+                <div className="space-y-3">
+                  {currentExpenses.map(([category, total]) => (
+                    <div key={category} className="flex flex-col">
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-gray-600">{category}</span>
+                        <span className="text-gray-600">{((total / totalExpenses) * 100).toFixed(1)}%</span>
                       </div>
-                      <span className="text-sm text-gray-600 mt-1">{total > 0 ? ((total / totalExpenses) * 100).toFixed(1) : 0}% {category}</span>
+                      <div className="w-full bg-gray-200 rounded-full h-4">
+                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${(total / totalExpenses) * 100}%`}}/>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* progress bars */}
+              {/* earnings overview section */}
+              <div className="bg-white p-4 rounded-lg shadow-md h-[222px]">
+                <div className="flex justify-between items-center mb-4">
+                  <h1 className="text-dark-blue text-xl">Earnings Overview</h1>
+                  <div className="flex gap-2">
+                    <button onClick={prevIncomePage} className="p-1 rounded-full hover:bg-gray-100" disabled={incomePageCount <= 1}>
+                      <ChevronLeft className="w-5 h-5 text-gray-600" />
+                    </button>
+                    <button onClick={nextIncomePage} className="p-1 rounded-full hover:bg-gray-100" disabled={incomePageCount <= 1}>
+                      <ChevronRight className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {currentIncomes.map(([category, total]) => (
+                    <div key={category} className="flex flex-col">
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-gray-600">{category}</span>
+                        <span className="text-gray-600">{((total / totalIncomes) * 100).toFixed(1)}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-4">
+                        <div className="bg-green-500 h-4 rounded-full transition-all duration-500" style={{ width: `${(total / totalIncomes) * 100}%`}}/>
+                      </div>
                     </div>
                   ))}
                 </div>
