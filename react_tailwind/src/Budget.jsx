@@ -174,9 +174,9 @@ return (
                                             <span className="font-bold text-gray-700"> ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(item.spent)}</span>
                                         </p>
                                         {/* Progress Bar */}
-                                        <div className="w-full bg-gray-200 rounded-full h-2 mt-1 relative">
+                                        <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
                                             <div 
-                                                className={`h-2 rounded-full ${spentPercentage < 100 ? "bg-blue-500" : "bg-red-500"}`}
+                                                className={`h-2 rounded-full transition-all duration-300 ${spentPercentage < 100 ? "bg-blue-500" : "bg-red-500"}`}
                                                 style={{ width: `${Math.min(spentPercentage, 100)}%` }}
                                             ></div>
                                         </div>
@@ -185,14 +185,20 @@ return (
                                             {spentPercentage.toFixed(1)}% of budget used
                                         </p>
                                     </div>
-                        </div>
-                        );
-                    })}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
                 {/* savings section */}
                 <div className="w-full max-w-7xl mx-auto px-4">
-                    <h1 className="text-gray-500 text-xl my-4">Savings Goals</h1>
+                    <div className="flex justify-between items-center">
+                        <h1 className="text-gray-500 text-xl my-4">Savings Goals</h1>
+                        <button className="flex items-center border-2 gap-1 border-dark-blue text-dark-blue rounded-lg w-[100px] h-[40px] justify-center hover:border-blue-300 hover:text-blue-300">
+                            <h1 className="text-sm font-bold">Add Goal</h1>
+                            <TbTargetArrow className="w-5 h-5" />
+                        </button>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {savingItems.map((item, index) => (
                         <div key={index}className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">

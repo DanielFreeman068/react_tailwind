@@ -52,10 +52,6 @@ const Forms = () => {
                             <img className="h-12 w-auto rounded-full" src="https://tse1.mm.bing.net/th?id=OIP.cEvbluCvNFD_k4wC3k-_UwHaHa&pid=Api" alt="profile"/>
                         </div>
                     </div>
-                    {/* income has where, date, amount and desc with labels for each input */}
-                    {/* expense has where, date, amount, and desc with labels for each input */}
-                    {/* saving has where such as savings or one of the goals, going in or out, date, amount, and desc with labels for each input */}
-                    {/* debt has where, date, going in or out, amount, and desc with labels for each input */}
                     {/* main content */}
                     {!formActive &&
                     <div className="flex flex-col justify-between mx-auto mt-20 gap-10 md:gap-20">
@@ -83,21 +79,24 @@ const Forms = () => {
                         <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                             <IoReturnDownBack className="w-6 h-6" />
                         </button>
-                        <div className="text-center flex flex-col gap-4">
+                        <div className="text-center flex flex-col w-5/6 mx-auto">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Income</h1>
-                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
-                                <option value="Employment">Employment (Salary/Bonus/Freelance)</option>
-                                <option value="Investments">Investments (Interest/Dividends)</option>
-                                <option value="Gifts">Gifts</option>
-                                <option value="Government">Government (Benefits/Assistance)</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <div className="flex justify-between w-5/6 mx-auto">
+                            <div className="flex flex-col mt-2">
+                                <label className="text-left text-md" htmlFor="income-source">Source *</label>
+                                <select className="p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                                    <option value="Employment">Employment (Salary/Bonus/Freelance)</option>
+                                    <option value="Investments">Investments (Interest/Dividends)</option>
+                                    <option value="Gifts">Gifts</option>
+                                    <option value="Government">Government (Benefits/Assistance)</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div className="flex justify-between w-full mx-auto">
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
-                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
-                            <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
+                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
+                            <button className="mt-6 p-2 rounded-md text-white w-full bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
                         </div>
                     </div>
                     }
@@ -106,24 +105,25 @@ const Forms = () => {
                         <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                             <IoReturnDownBack className="w-6 h-6" />
                         </button>
-                        <div className="text-center flex flex-col gap-4">
+                        <div className="text-center flex flex-col gap-4 w-5/6 mx-auto">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Expense</h1>
-                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
                                 <option value="Living">Living (Rent/Utilities/Insurance)</option>
                                 <option value="Transportation">Transportation</option>
                                 <option value="Healthcare">Healthcare</option>
+                                <option value="Groceries">Groceries</option>
+                                <option value="Restaurant">Restaurant & Dining</option>
                                 <option value="Entertainment">Entertainment</option>
-                                <option value="Debt">Debt (Loans/Credit Cards)</option>
                                 <option value="Education">Education</option>
-                                <option value="Taxes">Taxes</option>
+                                <option value="Gifts">Gifts</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <div className="flex justify-between w-5/6 mx-auto">
+                            <div className="flex justify-between w-full mx-auto">
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
-                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
-                            <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
+                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
+                            <button className="mt-6 p-2 rounded-md text-white w-full bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
                         </div>
                     </div>
                     }
@@ -132,18 +132,22 @@ const Forms = () => {
                         <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                             <IoReturnDownBack className="w-6 h-6" />
                         </button>
-                        <div className="text-center flex flex-col gap-4">
+                        <div className="text-center flex flex-col gap-4 mx-auto w-5/6 mb-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Savings</h1>
-                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
-                                <option value="In">In</option>
-                                <option value="Out">Out</option>
+                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                                <option value="Student">Savings Balance</option>
+                                {/* goals dynamically displayed here */}
                             </select>
-                            <div className="flex justify-between w-5/6 mx-auto">
+                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                                <option value="In">Into Savings</option>
+                                <option value="Out">Out of Savings</option>
+                            </select>
+                            <div className="flex justify-between w-full mx-auto">
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
-                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
-                            <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
+                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
+                            <button className="mt-6 p-2 rounded-md text-white w-full bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
                         </div>
                     </div>
                     }
@@ -152,21 +156,27 @@ const Forms = () => {
                         <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                             <IoReturnDownBack className="w-6 h-6" />
                         </button>
-                        <div className="text-center flex flex-col gap-4">
+                        <div className="text-center flex flex-col gap-4 mx-auto w-5/6 mb-4">
                             <h1 className="text-dark-blue text-xl md:text-3xl mt-6">Debt</h1>
-                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
-                                <option value="Employment">Employment (Salary/Bonus/Freelance)</option>
-                                <option value="Investments">Investments (Interest/Dividends)</option>
-                                <option value="Gifts">Gifts</option>
-                                <option value="Government">Government (Benefits/Assistance)</option>
-                                <option value="Other">Other</option>
+                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                                <option value="Student">Student Loans</option>
+                                <option value="Credit">Credit Card Debt</option>
+                                <option value="Mortgage">Mortgage</option>
+                                <option value="Auto">Auto Loans</option>
+                                <option value="Medical">Medical Debt</option>
+                                <option value="Business">Business Loans</option>
+                                <option value="Tax">Tax Debt</option>
                             </select>
-                            <div className="flex justify-between w-5/6 mx-auto">
+                            <select className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
+                                <option value="Student">Adding to Debt</option>
+                                <option value="Credit">Paying off Debt</option>
+                            </select>
+                            <div className="flex justify-between w-full mx-auto">
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 mr-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="date" required />
                                 <input className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-3/6 ml-2 focus:outline-none focus:ring-1 focus:ring-[#284b74]" type="number" placeholder="$" required />
                             </div>
-                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-5/6 h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
-                            <button className="mt-6 p-2 rounded-md text-white w-5/6 bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
+                            <textarea className="mt-6 p-2 border border-gray-300 rounded-md text-gray-900 w-full h-[150px] mx-auto resize-none focus:outline-none focus:ring-1 focus:ring-[#284b74]" name="description" id="description" placeholder="Description..." required></textarea>
+                            <button className="mt-6 p-2 rounded-md text-white w-full bg-dark-blue mx-auto hover:bg-hl-blue hover:text-dark-blue">Submit Transaction</button>
                         </div>
                     </div>
                     }
