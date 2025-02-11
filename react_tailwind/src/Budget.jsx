@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import compassLogo from './compassLogo.png';
 // edit icon import
 import { FiEdit3 } from "react-icons/fi";
@@ -9,6 +9,27 @@ import Speedometer from "./Speedometer";
 import { TbTargetArrow } from "react-icons/tb";
 
 const Budget = () => {
+const [isVisible, setIsVisible] = useState(false);
+const speedometerRef = useRef(null);
+
+useEffect(() => {
+    const observer = new IntersectionObserver(
+    ([entry]) => {
+        if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+        }
+    },
+    { threshold: 0 }
+    );
+
+    if (speedometerRef.current) {
+    observer.observe(speedometerRef.current);
+    }
+
+    return () => observer.disconnect();
+}, []);
+
 const [isOpen, setIsOpen] = useState(false);
 
 const toggleSidebar = () => setIsOpen(!isOpen);
@@ -221,7 +242,14 @@ return (
                                     </div>
                                 </div>
                                 {/* speedometer */}
-                                <Speedometer value={item.currentAmount} maxValue={item.goalAmount} />
+                                <div ref={speedometerRef}>
+                                {isVisible && (
+                                    <Speedometer value={item.currentAmount} maxValue={item.goalAmount} />
+                                )}
+                                {!isVisible && (
+                                    <Speedometer value={0} maxValue={1} />
+                                )}
+                                </div>
                             </div>
                             <div className="flex justify-between items-center">
                                 <button className="text-red-600 hover:text-red-900 hover:border-b-2 hover:border-red-900 text-md transition-colors duration-200">

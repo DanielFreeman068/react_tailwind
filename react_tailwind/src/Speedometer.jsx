@@ -9,13 +9,17 @@ const Speedometer = ({ value, maxValue }) => {
 
     const [angle, setAngle] = useState(0);
     const [progress, setProgress] = useState(0);
+    const [displayPercent, setDisplayPercent] = useState(0);
+
 
     useEffect(() => {
-        const frames = 40;
+        const frames = 25;
         const angleIncrement = targetAngle / frames;
         const progressIncrement = targetProgress;
+        const percentIncrement = flooredPercentage / frames;
         let currentAngle = 0;
         let currentProgress = 0;
+        let currentPercent = 0;
 
         const animateBar = () => {
             if (currentProgress < targetProgress) {
@@ -23,7 +27,17 @@ const Speedometer = ({ value, maxValue }) => {
                 setProgress(currentProgress); 
                 requestAnimationFrame(animateBar);
             } else {
-                setAngle(targetAngle);
+                setProgress(targetProgress);
+            }
+        };
+
+        const animatePercent = () => {
+            if (currentPercent < flooredPercentage) {
+                currentPercent += percentIncrement;
+                setDisplayPercent(Math.floor(currentPercent));
+                requestAnimationFrame(animatePercent);
+            } else {
+                setDisplayPercent(flooredPercentage);
             }
         };
 
@@ -37,11 +51,12 @@ const Speedometer = ({ value, maxValue }) => {
             }
         }
         setTimeout(() => {
-            animateBar();
             animateNeedle();
+            animatePercent();
+            animateBar();
         }, 500);
 
-    }, [targetAngle, targetProgress]);
+    }, [targetAngle, targetProgress, flooredPercentage]);
 
     // Needle calculations
     const needleLength = 40;
@@ -78,7 +93,7 @@ const Speedometer = ({ value, maxValue }) => {
             {/* Labels */}
             <div className="flex justify-between w-full text-sm">
                 <span className="text-gray-500 w-[30px] mr-[5px] text-center">0%</span>
-                <div className="text-lg font-bold text-gray-700">{flooredPercentage}%</div>
+                <div className="text-lg font-bold text-gray-700">{displayPercent}%</div>
                 <span className="text-gray-500 w-[35px] text-center">100%</span>
             </div>
 
