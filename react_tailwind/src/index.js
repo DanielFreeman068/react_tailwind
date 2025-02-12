@@ -4,6 +4,7 @@ import './index.css';
 import Dashboard from './App';
 import Forms from './Forms';
 import Budget from './Budget';
+import History from './History';
 
 // Import necessary components for routing
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -12,7 +13,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const router = createBrowserRouter([
   { path: '/', element: <Dashboard /> },
   { path: '/forms', element: <Forms /> },
-  { path: '/history', element: <Forms /> },
+  { path: '/history', element: <History /> },
   { path: '/budget', element: <Budget /> },
 ])
 

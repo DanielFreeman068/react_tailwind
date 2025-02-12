@@ -10,7 +10,25 @@ import { TbTargetArrow } from "react-icons/tb";
 
 const Budget = () => {
 const [isVisible, setIsVisible] = useState(false);
+const [threshold, setThreshold] = useState(0.4);
 const speedometerRef = useRef(null);
+
+useEffect(() => {
+    const updateThreshold = () => {
+    if (window.innerWidth < 768) {
+        setThreshold(0.4);
+    } else {
+        setThreshold(0.8);
+    }
+    };
+
+    updateThreshold();
+    window.addEventListener("resize", updateThreshold);
+
+    return () => {
+    window.removeEventListener("resize", updateThreshold);
+    };
+}, []);
 
 useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,7 +38,7 @@ useEffect(() => {
         observer.disconnect();
         }
     },
-    { threshold: 0 }
+    { threshold }
     );
 
     if (speedometerRef.current) {
@@ -28,7 +46,7 @@ useEffect(() => {
     }
 
     return () => observer.disconnect();
-}, []);
+}, [threshold]);
 
 const [isOpen, setIsOpen] = useState(false);
 
@@ -220,7 +238,7 @@ return (
                             <TbTargetArrow className="w-5 h-5" />
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div ref={speedometerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {savingItems.map((item, index) => (
                         <div key={index}className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
                             <div className="flex justify-between">
@@ -242,14 +260,12 @@ return (
                                     </div>
                                 </div>
                                 {/* speedometer */}
-                                <div ref={speedometerRef}>
                                 {isVisible && (
                                     <Speedometer value={item.currentAmount} maxValue={item.goalAmount} />
                                 )}
                                 {!isVisible && (
                                     <Speedometer value={0} maxValue={1} />
                                 )}
-                                </div>
                             </div>
                             <div className="flex justify-between items-center">
                                 <button className="text-red-600 hover:text-red-900 hover:border-b-2 hover:border-red-900 text-md transition-colors duration-200">
