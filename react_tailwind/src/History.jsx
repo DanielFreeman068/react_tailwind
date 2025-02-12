@@ -44,9 +44,40 @@ const History = () => {
                     </div>
                     {/* main content */}
                     {/* FILTER SECTION */}
-                    <div className="flex">
-                        <div className="flex">
-                            
+                    <div className="flex justify-between mt-4">
+                        <div className="w-full max-w-7xl mx-auto">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
+                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
+                                        <option value="1_week">7 Days</option>
+                                        <option value="1_month">1 Month</option>
+                                        <option value="6_months">6 Months</option>
+                                        <option value="12_months">12 Months</option>
+                                    </select>
+                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
+                                    <input className="bg-white text-sm px-2" type="date" />
+                                </div>
+                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
+                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
+                                        <option value="1_week">7 Days</option>
+                                        <option value="1_month">1 Month</option>
+                                        <option value="6_months">6 Months</option>
+                                        <option value="12_months">12 Months</option>
+                                    </select>
+                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
+                                    <input className="bg-white text-sm px-2" type="date" />
+                                </div>
+                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
+                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
+                                        <option value="1_week">7 Days</option>
+                                        <option value="1_month">1 Month</option>
+                                        <option value="6_months">6 Months</option>
+                                        <option value="12_months">12 Months</option>
+                                    </select>
+                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
+                                    <input className="bg-white text-sm px-2" type="date" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

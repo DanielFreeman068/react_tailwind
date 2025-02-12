@@ -152,7 +152,7 @@ const Forms = () => {
                     }
                     {/* INCOME FORM */}
                     {selectedOption === "income" && formActive && (
-                        <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
+                        <form className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
                             <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                                 <IoReturnDownBack className="w-6 h-6" />
                             </button>
@@ -194,11 +194,11 @@ const Forms = () => {
                                     Submit Transaction
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     )}
                     {/* EXPENSES FORM */}
                     {selectedOption === "expense" && formActive && (
-                        <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
+                        <form className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
                             <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                                 <IoReturnDownBack className="w-6 h-6" />
                             </button>
@@ -244,11 +244,11 @@ const Forms = () => {
                                     Submit Transaction
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     )}
                     {/* SAVINGS FORM */}
                     {selectedOption === "savings" && formActive && (
-                        <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
+                        <form className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
                             <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                                 <IoReturnDownBack className="w-6 h-6" />
                             </button>
@@ -271,7 +271,6 @@ const Forms = () => {
                                 <div className="flex flex-col mt-6">
                                     <label className="text-left text-md text-gray-700 font-medium" htmlFor="savings-transaction">Transaction Type</label>
                                     <select className="p-2 border border-gray-300 rounded-md text-gray-900 w-full mx-auto focus:outline-none focus:ring-1 focus:ring-[#284b74]" required>
-                                        {/* IF USER PICKS GOAL SHOULD USER BE ABLE TO TAKE OUT OF GOAL OR NO(I THINK NO) */}
                                         <option value="In">Into Savings/Goal</option>
                                         <option value="Out">Out of Savings/Goal</option>
                                     </select>
@@ -300,11 +299,11 @@ const Forms = () => {
                                     Submit Transaction
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     )}
                     {/* DEBT FORM */}
                     {selectedOption === "debt" && formActive && (
-                        <div className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
+                        <form className="rounded-2xl bg-white max-w-[800px] min-h-[600px] border border-[#284b74] mx-auto p-4 mt-8">
                             <button className="text-gray flex items-center hover:text-dark-blue" onClick={() => setFormActive(false)}>
                                 <IoReturnDownBack className="w-6 h-6" />
                             </button>
@@ -354,7 +353,7 @@ const Forms = () => {
                                     Submit Transaction
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     )}
                 </div>
             </div>

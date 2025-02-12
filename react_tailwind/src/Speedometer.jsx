@@ -13,7 +13,7 @@ const Speedometer = ({ value, maxValue }) => {
 
 
     useEffect(() => {
-        const frames = 25;
+        const frames = 45;
         const angleIncrement = targetAngle / frames;
         const progressIncrement = targetProgress;
         const percentIncrement = flooredPercentage / frames;
