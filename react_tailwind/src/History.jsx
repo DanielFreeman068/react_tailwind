@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import compassLogo from './compassLogo.png'
+import { AiOutlineArrowUp, AiOutlineArrowDown, AiOutlineCreditCard } from "react-icons/ai";
+import { GiPiggyBank } from "react-icons/gi";
+
 
 const History = () => {
         const [isOpen, setIsOpen] = useState(false);
@@ -46,13 +49,13 @@ const History = () => {
                     {/* FILTER SECTION */}
                     <div className="flex justify-between mt-4">
                         <div className="w-full max-w-7xl mx-auto">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
                                     <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
-                                        <option value="1_week">7 Days</option>
-                                        <option value="1_month">1 Month</option>
-                                        <option value="6_months">6 Months</option>
-                                        <option value="12_months">12 Months</option>
+                                        <option value="1_week">Last 7 Days</option>
+                                        <option value="1_month">Last Month</option>
+                                        <option value="6_months">Last 6 Months</option>
+                                        <option value="12_months">Last 12 Months</option>
                                     </select>
                                     <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
                                     <input className="bg-white text-sm px-2" type="date" />
@@ -77,6 +80,18 @@ const History = () => {
                                     <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
                                     <input className="bg-white text-sm px-2" type="date" />
                                 </div>
+                            </div>
+                            <div className="flex items-center justify-center w-10 h-10 bg-yellow-500 rounded-full text-white">
+                                <AiOutlineCreditCard size={24} />
+                            </div>
+                            <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full text-white">
+                                <GiPiggyBank size={24} />
+                            </div>
+                            <div className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full text-white">
+                                <AiOutlineArrowUp size={24} />
+                            </div>
+                            <div className="flex items-center justify-center w-10 h-10 bg-red-500 rounded-full text-white">
+                                <AiOutlineArrowDown size={24} />
                             </div>
                         </div>
                     </div>
