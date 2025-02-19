@@ -6,8 +6,62 @@ import { GiPiggyBank } from "react-icons/gi";
 
 const History = () => {
         const [isOpen, setIsOpen] = useState(false);
+        const [option, setOption] = useState("")
+        const [category, setCategory] = useState(null)
     
         const toggleSidebar = () => setIsOpen(!isOpen);
+
+        const incomeCategories = [
+            "Employment (Salary/Bonus/Freelance)",
+            "Investments (Interest/Dividends)",
+            "Gifts",
+            "Government (Benefits/Assistance)",
+            "Other"
+        ];
+        
+        const expenseCategories = [
+            "Living (Rent/Utilities/Insurance)",
+            "Transportation",
+            "Healthcare",
+            "Groceries",
+            "Restaurant & Dining",
+            "Entertainment",
+            "Education",
+            "Gifts",
+            "Other"
+        ];
+
+        const debtCategories = [
+            "Student Loans",
+            "Credit Card Debt",
+            "Mortgage",
+            "Personal",
+            "Auto Loans",
+            "Medical Debt",
+            "Business Loans",
+            "Tax Debt"
+        ];
+
+        const savingCategories = [
+            "Savings Balance",
+            "Goals",
+        ];
+
+        const handleSelection = (value) => {
+            if (value) {
+                setOption(value);
+                if (value === 'income') {
+                    setCategory(incomeCategories);
+                } else if (value === 'expense') {
+                    setCategory(expenseCategories);
+                } else if (value === 'saving') {
+                    setCategory(savingCategories);
+                } else if (value === 'debt') {
+                    setCategory(debtCategories);
+                };
+            };
+        };
+
     return (
         <>
             <div className="flex min-h-screen bg-bg-gray">
@@ -50,35 +104,43 @@ const History = () => {
                     <div className="flex justify-between mt-4">
                         <div className="w-full max-w-7xl mx-auto">
                             <div className="flex flex-wrap gap-4">
-                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
-                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
+                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden">
+                                    <select className="bg-dark-blue p-2 text-white font-semibold mx-auto text-sm focus:outline-none" required>
                                         <option value="1_week">Last 7 Days</option>
                                         <option value="1_month">Last Month</option>
                                         <option value="6_months">Last 6 Months</option>
                                         <option value="12_months">Last 12 Months</option>
                                     </select>
-                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
-                                    <input className="bg-white text-sm px-2" type="date" />
+                                    <input className="bg-dark-blue text-white font-semibold text-sm px-2 border-l-2 border-bg-gray focus:outline-none date-white-icon" type="date" />
                                 </div>
-                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
-                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
-                                        <option value="1_week">7 Days</option>
-                                        <option value="1_month">1 Month</option>
-                                        <option value="6_months">6 Months</option>
-                                        <option value="12_months">12 Months</option>
+                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden">
+                                    <select className="bg-dark-blue p-2 text-white font-semibold mx-auto text-sm focus:outline-none border-r-2 border-bg-gray"  onChange={(e)=> handleSelection(e.target.value)} required>
+                                        <option value="" hidden>Type</option>
+                                        <option value="income">Income</option>
+                                        <option value="expense">Expense</option>
+                                        <option value="saving">Saving</option>
+                                        <option value="debt">Debt</option>
                                     </select>
-                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
-                                    <input className="bg-white text-sm px-2" type="date" />
-                                </div>
-                                <div className="bg-white flex rounded-lg border border-gray-300 overflow-hidden space-x-2">
-                                    <select className="bg-white p-2 text-gray-900 mx-auto text-sm" required>
-                                        <option value="1_week">7 Days</option>
-                                        <option value="1_month">1 Month</option>
-                                        <option value="6_months">6 Months</option>
-                                        <option value="12_months">12 Months</option>
+
+                                    {option && (
+                                    <select className="bg-dark-blue p-2 text-white font-semibold mx-auto text-sm focus:outline-none border-r-2 border-bg-gray" required>
+                                        <option value="" hidden>Category</option>
+                                        {/* FIX THE WIDTH OF THE OPTIONS SO IT DOES NOT STRETCH THE WIDTH OF THE INPUT */}
+                                        {category.map((item) => (
+                                            <option className="truncate" key={item} value={item.toLowerCase()}>{item}</option>
+                                        ))}
+                                    </select>)}
+
+                                    <select className="bg-dark-blue p-2 text-white font-semibold mx-auto text-sm focus:outline-none" required>
+                                        <option value="" hidden>Amount</option>
+                                        <option value="50_99">1 - 99</option>
+                                        <option value="100_299">100 - 299</option>
+                                        <option value="300_599">300 - 599</option>
+                                        <option value="600_999">600 - 999</option>
+                                        <option value="1000_1999">1000 - 2499</option>
+                                        <option value="2000_2999">2500 - 4999</option>
+                                        <option value="3000_3999">5000+</option>
                                     </select>
-                                    <input className="bg-white text-sm border-l-2 border-r-2 border-gray-300 px-2" type="date" />
-                                    <input className="bg-white text-sm px-2" type="date" />
                                 </div>
                             </div>
                             <div className="flex items-center justify-center w-10 h-10 bg-yellow-500 rounded-full text-white">
