@@ -64,8 +64,53 @@ const History = () => {
             };
         };
 
-        // MAKE ALL TRANSACTION DATA
+        //type icons
+        const getTypeIcon = (type) => {
+            switch (type.toLowerCase()) {
+                case "expense":
+                    return <div className="flex items-center justify-center w-8 h-8 bg-red-500 rounded-full text-white"><AiOutlineArrowDown size={18}/></div>;
+                case "income":
+                    return <div className="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full text-white"><AiOutlineArrowUp size={18}/></div>;
+                case "savings":
+                    return <div className="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full text-white"><GiPiggyBank size={18}/></div>;
+                case "debt":
+                    return <div className="flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full text-white"><AiOutlineCreditCard size={18}/></div>;
+            }
+        };  
 
+        //TRANSACTION DATA
+        const transactions = [
+            { type: "Savings", amount: "$5", category: "Travel to Dubai", date: "2025-02-15", description: "Paid deposit for Dubai hotel" },
+            { type: "Expense", amount: "$300", category: "Healthcare", date: "2025-02-12", description: "Doctor visit and medication" },
+            { type: "Debt", amount: "$750", category: "Personal", date: "2025-02-04", description: "Personal loan repayment" },
+            { type: "Income", amount: "$500", category: "Investments", date: "2025-02-07", description: "Stock dividends" },
+            { type: "Debt", amount: "$50", category: "Auto Loans", date: "2025-02-06", description: "Car loan installment" },
+            { type: "Savings", amount: "$450", category: "Home Renovation", date: "2025-02-12", description: "Contractor payment for kitchen renovation" },
+            { type: "Debt", amount: "$30,000", category: "Mortgage", date: "2025-02-03", description: "Monthly mortgage payment" },
+            { type: "Income", amount: "$3,000", category: "Employment", date: "2025-02-05", description: "Monthly salary" },
+            { type: "Expense", amount: "$50", category: "Entertainment", date: "2025-02-15", description: "Movie tickets" },
+            { type: "Savings", amount: "$500", category: "Upgrade Home Office", date: "2025-02-10", description: "Bought ergonomic office chair" },
+            { type: "Debt", amount: "$1,000", category: "Medical Debt", date: "2025-02-07", description: "Hospital bill payment" },
+            { type: "Income", amount: "$250", category: "Gifts", date: "2025-02-08", description: "Gift from family" },
+            { type: "Debt", amount: "$2,000", category: "Student Loans", date: "2025-02-01", description: "Federal student loan payment" },
+            { type: "Expense", amount: "$250", category: "Groceries", date: "2025-02-13", description: "Weekly grocery shopping" },
+            { type: "Savings", amount: "$100", category: "Buy New Laptop", date: "2025-02-07", description: "Initial payment towards new laptop" },
+            { type: "Income", amount: "$600", category: "Government", date: "2025-02-09", description: "Unemployment benefits" },
+            { type: "Debt", amount: "$1,000", category: "Tax Debt", date: "2025-02-09", description: "Back taxes owed to IRS" },
+            { type: "Expense", amount: "$75", category: "Restaurant", date: "2025-02-14", description: "Dinner with friends" },
+            { type: "Savings", amount: "$50", category: "Fix Car Transmission", date: "2025-02-05", description: "Initial deposit for transmission fix" },
+            { type: "Savings", amount: "$25", category: "Learn a New Language", date: "2025-02-18", description: "Purchased books for language learning" },
+            { type: "Income", amount: "$300", category: "Other", date: "2025-02-10", description: "Freelance project payment" },
+            { type: "Expense", amount: "$200", category: "Other", date: "2025-02-18", description: "Miscellaneous expenses" },
+            { type: "Expense", amount: "$150", category: "Transportation", date: "2025-02-11", description: "Gas and maintenance" },
+            { type: "Savings", amount: "$500", category: "Savings", date: "2025-02-10", description: "Set aside money for savings" },
+            { type: "Expense", amount: "$1,200", category: "Living", date: "2025-02-10", description: "Rent payment" },
+            { type: "Income", amount: "$500", category: "Gifts", date: "2025-02-17", description: "Birthday gift for a friend" },
+            { type: "Debt", amount: "$10", category: "Credit Card Debt", date: "2025-02-02", description: "Credit card minimum payment" },
+            { type: "Expense", amount: "$500", category: "Education", date: "2025-02-16", description: "Online course" },
+            { type: "Savings", amount: "$100", category: "Buy New Laptop", date: "2025-02-07", description: "Initial payment towards new laptop" },
+        ];
+        
     return (
         <>
             <div className="flex min-h-screen bg-bg-gray">
@@ -107,7 +152,7 @@ const History = () => {
                     {/* FILTER SECTION */}
                     <div className="flex justify-between mt-4">
                         <div className="w-full max-w-7xl mx-auto">
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4 mb-10">
                                 <div className="flex rounded-lg border border-dark-blue overflow-hidden shadow-lg h-10">
                                     <select className="bg-input-blue p-2 text-dark-blue font-semibold mx-auto text-sm focus:outline-none" required>
                                         <option className="font-semibold" value="1_week">Last 7 Days</option>
@@ -162,37 +207,25 @@ const History = () => {
                             <table className="w-full border-collapse">
                                 <thead>
                                     <tr>
-                                        <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Date</th>
                                         <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Type</th>
-                                        <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Category</th>
                                         <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Amount</th>
+                                        <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Where</th>
+                                        <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Date</th>
                                         <th className="border px-4 py-2 text-dark-blue text-sm font-semibold">Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {data.map((item, index) => (
+                                    {transactions.map((item, index) => (
                                         <tr key={index}>
-                                            <td className="border px-4 py-2 text-dark-blue text-sm">{item.date}</td>
-                                            <td className="border px-4 py-2 text-dark-blue text-sm">{item.type}</td>
-                                            <td className="border px-4 py-2 text-dark-blue text-sm">{item.category}</td>
+                                            <td className="border px-4 py-2 text-dark-blue text-sm flex items-center gap-4">{getTypeIcon(item.type)}{item.type}</td>
                                             <td className="border px-4 py-2 text-dark-blue text-sm">{item.amount}</td>
+                                            <td className="border px-4 py-2 text-dark-blue text-sm">{item.category}</td>
+                                            <td className="border px-4 py-2 text-dark-blue text-sm">{item.date}</td>
                                             <td className="border px-4 py-2 text-dark-blue text-sm">{item.description}</td>
                                         </tr>
-                                    ))} */}
+                                    ))}
                                 </tbody>
                             </table>
-                            <div className="flex items-center justify-center w-10 h-10 bg-yellow-500 rounded-full text-white">
-                                <AiOutlineCreditCard size={24} />
-                            </div>
-                            <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full text-white">
-                                <GiPiggyBank size={24} />
-                            </div>
-                            <div className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full text-white">
-                                <AiOutlineArrowUp size={24} />
-                            </div>
-                            <div className="flex items-center justify-center w-10 h-10 bg-red-500 rounded-full text-white">
-                                <AiOutlineArrowDown size={24} />
-                            </div>
                         </div>
                     </div>
                 </div>
