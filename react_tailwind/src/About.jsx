@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import compassLogo from './compassLogo.png';
-
 const About = () => {
 
 return (

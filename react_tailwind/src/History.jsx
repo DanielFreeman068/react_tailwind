@@ -208,7 +208,7 @@ const History = () => {
                             </div>
                             {/* TABLE SECTION */}
                             <div className="border border-dark-blue rounded-lg overflow-hidden p-2 bg-white">
-                                <table className="w-full border-collapse">
+                                <table className="w-full border-collapse"> max-w-4
                                     <thead className="border-b">
                                         <tr>
                                             <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold hidden sm:block">Type</th>
@@ -242,15 +242,15 @@ const History = () => {
                             </div>
                             <div className="flex flex-wrap gap-4 bg-white border border-dark-blue rounded-lg p-8 mt-10">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                                    <div className="w-[30px] h-[15px] max-w-4 bg-green-500 rounded-full"></div>
                                     <p className="font-semibold text-sm text-gray-900">Indicates income, paying off debt, or setting aside money for savings.</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+                                    <div className="w-[30px] h-[15px] max-w-4 bg-red-500 rounded-full"></div>
                                     <p className="font-semibold text-sm text-gray-900">Indicates expenses or taking money out of savings.</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                                    <div className="w-[30px] h-[15px] max-w-4 bg-yellow-500 rounded-full"></div>
                                     <p className="font-semibold text-sm text-gray-900">Indicates adding to your debt.</p>
                                 </div>
                             </div>
