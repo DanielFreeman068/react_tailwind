@@ -126,15 +126,14 @@ return (
             <div className="max-w-6xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
-                    <div key={index} className="bg-white text-gray-900 rounded-xl p-6 shadow-lg transition-transform transform hover:-translate-y-1">
+                    <div key={index} className="bg-dark-blue text-gray-900 rounded-xl p-6 shadow-lg transition-transform transform hover:-translate-y-1">
                         <div className="mb-4">
-                            <h3 className="text-xl font-bold text-gray-800">— {testimonial.name}</h3>
+                            <h3 className="text-xl font-bold text-white">— {testimonial.name}</h3>
                             <span className="text-blue-500 font-medium">{testimonial.school}</span>
                         </div>
                         <div className="relative">
-                            <i className="fas fa-quote-left text-blue-500 opacity-20 text-3xl absolute -top-2 -left-2"></i>
-                            <p className="text-lg italic mb-4">"{testimonial.quote}"</p>
-                            <span className="text-gray-500 text-sm">{testimonial.date}</span>
+                            <p className="text-lg text-gray-100 italic mb-4">"{testimonial.quote}"</p>
+                            <span className="text-gray-100 text-sm">{testimonial.date}</span>
                         </div>
                     </div>
                 ))}
