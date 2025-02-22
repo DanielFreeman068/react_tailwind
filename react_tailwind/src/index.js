@@ -5,6 +5,7 @@ import Dashboard from './App';
 import Forms from './Forms';
 import Budget from './Budget';
 import History from './History';
+import About from './About';
 
 // Import necessary components for routing
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   { path: '/forms', element: <Forms /> },
   { path: '/history', element: <History /> },
   { path: '/budget', element: <Budget /> },
+  { path: '/about', element: <About />}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
