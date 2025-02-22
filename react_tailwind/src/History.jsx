@@ -211,12 +211,12 @@ const History = () => {
                                 <table className="w-full border-collapse">
                                     <thead className="border-b">
                                         <tr>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold hidden sm:block">Type</th>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold sm:hidden">Type/Date</th>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold">Amount</th>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold">Where</th>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold hidden sm:table-cell">Date</th>
-                                            <th className="px-4 py-2 text-start text-dark-blue text-sm font-semibold hidden md:table-cell">Description</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold hidden sm:block">Type</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold sm:hidden">Type/Date</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold">Amount</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold">Where</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold hidden sm:table-cell">Date</th>
+                                            <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold hidden md:table-cell">Description</th>
                                         </tr>
                                     </thead>
                                     <tbody>
