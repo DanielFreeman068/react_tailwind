@@ -208,7 +208,7 @@ const History = () => {
                             </div>
                             {/* TABLE SECTION */}
                             <div className="border border-dark-blue rounded-lg overflow-hidden p-2 bg-white">
-                                <table className="w-full border-collapse"> max-w-4
+                                <table className="w-full border-collapse">
                                     <thead className="border-b">
                                         <tr>
                                             <th className="px-4 py-4 text-start text-dark-blue text-sm font-semibold hidden sm:block">Type</th>
