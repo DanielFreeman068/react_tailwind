@@ -82,8 +82,8 @@ return (
             </div>
             <div className="flex gap-6 flex-col md:flex-row items-center">
                 <div className="flex flex-row md:flex-col gap-4 pr-0 md:pr-4 h-full">
-                    <button className="rounded-3xl w-[180px] h-[40px] sm:w-[220px] sm:h-[44px] font-semibold text-white bg-dark-blue px-4 py-2 hover:bg-hl-blue hover:text-dark-blue">Login</button>
-                    <button className="rounded-3xl w-[180px] h-[40px] sm:w-[220px] sm:h-[44px] border-2 border-dark-blue text-dark-blue font-semibold px-4 py-2 hover:bg-gray-300">Create an Account</button>
+                    <button className="rounded-3xl w-[180px] h-[44px] sm:w-[220px] font-semibold text-white bg-dark-blue px-4 py-2 hover:bg-hl-blue hover:text-dark-blue">Login</button>
+                    <button className="rounded-3xl w-[180px] h-[44px] sm:w-[220px] border-2 border-dark-blue text-dark-blue font-semibold px-4 py-2 hover:bg-gray-300">Create an Account</button>
                 </div>
                 <p className="text-md lg:text-lg text-gray-900 py-6 md:border-l border-dark-blue px-4 sm:px-10"><span className="font-semibold text-dark-blue">Cash Compass</span> is a simple financial tool designed to help students manage their money with ease. It lets you track income, expenses, and spending patterns while providing clear summaries and customizable categories. With features like search, filters, and easy updates, <span className="font-semibold text-dark-blue">Cash Compass</span> makes budgeting effortless and empowers better financial decisions.</p>
             </div>
