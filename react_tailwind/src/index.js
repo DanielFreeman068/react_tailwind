@@ -6,6 +6,8 @@ import Forms from './Forms';
 import Budget from './Budget';
 import History from './History';
 import About from './About';
+import Login from './Login';
+import Signup from './Signup';
 
 // Import necessary components for routing
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -16,7 +18,9 @@ const router = createBrowserRouter([
   { path: '/forms', element: <Forms /> },
   { path: '/history', element: <History /> },
   { path: '/budget', element: <Budget /> },
-  { path: '/about', element: <About />}
+  { path: '/about', element: <About />},
+  { path: '/login', element: <Login />},
+  { path: '/signup', element: <Signup />},
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -230,7 +230,7 @@ const History = () => {
                                                     <div className="hidden sm:block">{item.type}</div>
                                                 </td>
                                                 <td className={`px-4 py-2 ${item.type !== 'Debt' ? item.amount > 0 ? 'text-green-500' : 'text-red-500' : item.amount > 0 ? 'text-yellow-500' : 'text-green-500'} text-sm`}>{item.type === 'income' ? '+' : ''}{item.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
-                                                <td className="px-4 py-2 text-dark-blue text-sm text-nowrap">{item.category}</td>
+                                                <td className="px-4 py-2 text-dark-blue text-sm">{item.category}</td>
                                                 <td className="px-4 py-4 text-dark-blue text-sm hidden sm:table-cell text-nowrap">{item.date}</td>
                                                 <td className="px-4 py-2 text-dark-blue text-sm hidden md:table-cell truncate overflow-hidden max-w-[150px] lg:max-w-[250px] whitespace-nowrap" title={item.description}>
                                                     {item.description}

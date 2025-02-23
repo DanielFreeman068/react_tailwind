@@ -17,6 +17,7 @@ module.exports = {
         'desktop': '1660px',
         'desktopXL': '1780px',
         'desktop2XL': '1880px',
+        xs: '480px',
       },
     },
   },
