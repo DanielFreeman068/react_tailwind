@@ -77,7 +77,7 @@ const debtItems = [
         title: "Student Loans",
         currentAmount: 2000,
         color: "text-blue-500",
-        description: "Includes fed spent: 10,eral and private student loans for tuition, books, housing, and other educational expenses."
+        description:"Includes federal and private student loans for tuition, books, housing, and other educational expenses."
     },
     {
         icon: FaCreditCard,
